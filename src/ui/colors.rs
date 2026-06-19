@@ -35,8 +35,8 @@ pub struct Theme {
     pub tooltip_bg: Color,
 }
 
-pub static THEME: Key<Arc<Theme>> = Key::new("goxkey.theme");
-pub static IS_DARK: Key<bool> = Key::new("goxkey.is_dark");
+pub static THEME: Key<Arc<Theme>> = Key::new("tantankey.theme");
+pub static IS_DARK: Key<bool> = Key::new("tantankey.is_dark");
 
 pub fn light_theme() -> Theme {
     Theme {

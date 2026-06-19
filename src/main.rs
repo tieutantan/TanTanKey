@@ -492,7 +492,7 @@ mod tests {
 }
 
 fn main() {
-    let app_title = format!("gõkey v{APP_VERSION}");
+    let app_title = format!("TanTanKey v{APP_VERSION}");
     env_logger::init();
     {
         let config = crate::config::CONFIG_MANAGER.lock().unwrap();
@@ -508,7 +508,7 @@ fn main() {
         let app = AppLauncher::with_window(win);
         _ = app.launch(());
     } else {
-        // Start the GõKey application
+        // Start the TanTanKey application
         rebuild_keyboard_layout_map();
         let win = WindowDesc::new(ui::main_ui_builder())
             .title(app_title)

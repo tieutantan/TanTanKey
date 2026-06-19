@@ -57,7 +57,7 @@ impl ConfigStore {
     fn get_config_path() -> PathBuf {
         get_home_dir()
             .expect("Cannot read home directory!")
-            .join(".goxkey")
+            .join(".tantankey")
     }
 
     fn write_config_data(&mut self) -> Result<()> {

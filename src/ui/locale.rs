@@ -81,10 +81,10 @@ pub fn t(key: &'static str) -> &'static str {
 
         // ── Accessibility permission dialog ─────────────────────────────
         (Lang::Vi, "perm.title") => {
-            "Chờ đã! Bạn cần phải cấp quyền Accessibility\ncho ứng dụng GõKey trước khi sử dụng."
+            "Chờ đã! Bạn cần phải cấp quyền Accessibility\ncho ứng dụng TanTanKey trước khi sử dụng."
         }
         (Lang::En, "perm.title") => {
-            "Wait! You need to grant Accessibility\npermission for GõKey before using."
+            "Wait! You need to grant Accessibility\npermission for TanTanKey before using."
         }
 
         (Lang::Vi, "perm.subtitle") => {
@@ -144,8 +144,8 @@ pub fn t(key: &'static str) -> &'static str {
         (Lang::Vi, "general.launch_at_login") => "Khởi động cùng hệ thống",
         (Lang::En, "general.launch_at_login") => "Launch at login",
 
-        (Lang::Vi, "general.launch_at_login_desc") => "Tự động mở GõKey khi đăng nhập",
-        (Lang::En, "general.launch_at_login_desc") => "Start gõkey when you log in",
+        (Lang::Vi, "general.launch_at_login_desc") => "Tự động mở TanTanKey khi đăng nhập",
+        (Lang::En, "general.launch_at_login_desc") => "Start TanTanKey when you log in",
 
         (Lang::Vi, "general.toggle_shortcut") => "Bật/tắt tiếng Việt",
         (Lang::En, "general.toggle_shortcut") => "Toggle Vietnamese input",
