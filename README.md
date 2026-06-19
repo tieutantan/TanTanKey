@@ -3,38 +3,15 @@
 </p>
 
 
-<img width="1585" height="797" alt="screenshots" src="https://github.com/user-attachments/assets/42930e8a-77fb-4493-aa90-3c0bb9f1ab40" />
+# TanTanKey
 
+**TanTanKey** (formerly **Gõkey**) — A Vietnamese input method editor for macOS.
 
-**Gõkey** - A Vietnamese input method editor.
+### Option Install 1: Download the DMG Installer
 
-- :zap: Excellent performance (Gen Z translation: Blazing fast!)
-- :crab: Written completely in Rust.
-- :keyboard: Supported both Telex and VNI input method.
-- :sparkles: Focused on typing experience and features that you will use.
+Pre-built DMG files are available in the repository root as `TanTanKey.dmg`. Simply download and open it, then drag `TanTanKey.app` to your `/Applications` folder.
 
-## Why another Vietnamese IME?
-
-> technical curiosity
-
-## About
-
-This is my attempt to build an input method editor using only Rust. It's not the first, and definitely not the last.
-
-The goal is to create an input method editor that enable users to type Vietnamese text on the computer using
-either VNI or TELEX method. Other than that, no other features are planned.
-
-## How to install
-
-There are 2 options to download GõKey at this moment: Build from source or Download the Nightly build.
-
-### Option 1: Download the Nightly Build
-
-Nightly build is the prebuilt binary that automatically bundled everytime we merged the code to the `main` branch.
-
-You can download it at the Release page here: https://github.com/huytd/goxkey/releases/tag/nightly-build
-
-### Option 2: Build from source
+### Option Install 2: Build from source
 
 The source code can be compiled easily:
 
@@ -43,21 +20,30 @@ The source code can be compiled easily:
    ```
    cargo install cargo-bundle
    ```
-3. Checkout the source code of the **gõkey** project
+3. Checkout the source code:
    ```
-   git clone https://github.com/huytd/goxkey && cd goxkey
+   git clone https://github.com/tantn/tantankey && cd tantankey
    ```
-4. Run the bundle command:
+4. Run the build script:
 
    ```
-   cargo bundle
+   ./build.sh
    ```
 
-After that, you'll find the `GoKey.app` file in the `target/debug/bundle` folder. Copy it to your `/Applications` folder.
+   The script will:
+   - Convert `icon.png` → `icon.icns` if the PNG is newer.
+   - Build the release bundle with `cargo bundle --release`.
+   - Copy `TanTanKey.app` and `TanTanKey.dmg` to the project root.
 
-5. **(Important!):** Before you run the app, make you you already allowed Accessibility access for the app. Follow the [guide in the Wiki](https://github.com/huytd/goxkey/wiki/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-s%E1%BB%ADa-l%E1%BB%97i-kh%C3%B4ng-g%C3%B5-%C4%91%C6%B0%E1%BB%A3c-ti%E1%BA%BFng-Vi%E1%BB%87t-tr%C3%AAn-macOS) to do so.
+   Or manually:
 
-Without this step, the app will crash and can't be use.
+   ```
+   cargo bundle --release
+   ```
+
+   After that, you'll find the `TanTanKey.app` file in the `target/release/bundle/osx/` folder. Copy it to your `/Applications` folder.
+
+5. **(Important!):** Before you run the app, make sure you already allowed Accessibility access for the app. Without this step, the app will crash and can't be used.
 
 ## Development
 
@@ -70,13 +56,24 @@ cargo r -- --lang vi
 cargo r -- --lang en
 ```
 
-## Dependencies
+## Build
 
-- [core-foundation](https://crates.io/crates/core-foundation), [core-graphics](https://crates.io/crates/core-graphics): for event handling on macOS
-- [vi-rs](https://github.com/zerox-dg/vi-rs): the Vietnamese Input Engine
+The project ships with a `build.sh` script that automates the entire build process:
 
-## Fun fact
+```sh
+./build.sh
+```
 
-Do you know how to type gõkey in Telex?
+This will:
+1. Update `icon.icns` from `icon.png` if the PNG has been modified.
+2. Run `cargo bundle --release` to compile and bundle the app.
+3. Copy the resulting `TanTanKey.app` and `TanTanKey.dmg` to the project root.
 
-Do this: `gox<cmd>key`
+You can also use the `Makefile`:
+
+```sh
+make bundle    # Build release + copy artifacts
+make run       # cargo r (debug build)
+make setup     # Install git hooks
+make release   # Build, sign, notarize, and produce release zip
+```
